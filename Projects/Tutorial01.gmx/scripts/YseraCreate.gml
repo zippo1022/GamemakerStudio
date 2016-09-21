@@ -1,4 +1,4 @@
-phy_fix_rotation = 1;
+phy_fixed_rotation = 1;
 enum PlayerDirection{
     UP,
     DOWN,

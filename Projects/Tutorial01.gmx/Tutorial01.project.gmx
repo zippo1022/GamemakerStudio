@@ -37,6 +37,7 @@
   <scripts name="scripts">
     <script>scripts\YseraStep.gml</script>
     <script>scripts\YseraCreate.gml</script>
+    <script>scripts\YseraAnimationEnd.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Character">
