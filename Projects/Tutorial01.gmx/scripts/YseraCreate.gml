@@ -1,5 +1,6 @@
 phy_fixed_rotation = 1;
-enum PlayerDirection{
+enum PlayerDirection
+{
     UP,
     DOWN,
     LEFT,
@@ -8,3 +9,4 @@ enum PlayerDirection{
 m_playerDirection = PlayerDirection.DOWN;
 m_isAttacking = false;
 m_isInSkill = false;
+m_fired = false;

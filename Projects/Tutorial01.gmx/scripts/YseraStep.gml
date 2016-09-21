@@ -3,9 +3,10 @@ image_speed = 0.25;//使用1/4的速度播放sprite动画
 
 if(m_isAttacking == false && m_isInSkill == false)
 {
-if(keyboard_check(ord('J'))){
-    m_isAttacking = true;
-    switch(m_playerDirection)
+    if(keyboard_check(ord('J')))
+    {
+        m_isAttacking = true;
+        switch(m_playerDirection)
     {
     case PlayerDirection.UP:
         sprite_index = spr_ysera_attack_back;
@@ -21,46 +22,82 @@ if(keyboard_check(ord('J'))){
         break;
     }
     image_index = 0;
-}
-else if(keyboard_check(ord('K')))
-{
-    m_isInSkill = true;
-    sprite_index = spr_ysera_skill;
-    image_index = 0;
-}
-if (keyboard_check(ord('A')))
-{
-    phy_position_x = phy_position_x - 4;
-    sprite_index = spr_ysera_walk_side;
-    image_xscale = 1;
-    m_playerDirection = PlayerDirection.LEFT;
+    m_fired = false;
+    }
+    else if(keyboard_check(ord('K')))
+    {
+        m_isInSkill = true;
+        sprite_index = spr_ysera_skill;
+        image_index = 0;
+        m_fired = false;
+    }
+    else if (keyboard_check(ord('A')))
+    {
+        phy_position_x = phy_position_x - 4;
+        sprite_index = spr_ysera_walk_side;
+        image_xscale = 1;
+        m_playerDirection = PlayerDirection.LEFT;
+    }
+    
+    else if (keyboard_check(ord('D')))
+    {
+        phy_position_x = phy_position_x + 4;
+        sprite_index = spr_ysera_walk_side;
+        image_xscale = -1;
+        m_playerDirection = PlayerDirection.RIGHT;
+    }
+    
+    else if (keyboard_check(ord('W')))
+    {
+        phy_position_y = phy_position_y - 4;
+        sprite_index = spr_ysera_walk_back;
+        m_playerDirection = PlayerDirection.UP;
+    }
+    
+    else if (keyboard_check(ord('S')))
+    {
+        phy_position_y = phy_position_y + 4;
+        sprite_index = spr_ysera_walk_front;
+        m_playerDirection = PlayerDirection.DOWN;
+    }
+    
+    else
+    {
+        sprite_index = spr_ysera_idle;
+    }
 }
 
-else if (keyboard_check(ord('D')))
+if(sprite_index == spr_ysera_attack_side
+|| sprite_index == spr_ysera_attack_front
+|| sprite_index == spr_ysera_attack_back)
 {
-    phy_position_x = phy_position_x + 4;
-    sprite_index = spr_ysera_walk_side;
-    image_xscale = -1;
-    m_playerDirection = PlayerDirection.RIGHT;
+    if(image_index > 2 && m_fired == false)
+    {
+    var magicBullet = instance_create(x, y, obj_ysera_magic_bullet);
+    switch(m_playerDirection)
+    {
+        case PlayerDirection.UP:
+            magicBullet.m_speedY = -10;
+            break;
+        case PlayerDirection.DOWN:
+            magicBullet.m_speedY = 10;
+            break;
+        case PlayerDirection.LEFT:
+            magicBullet.m_speedX = -10;
+            break;
+        case PlayerDirection.RIGHT:
+            magicBullet.m_speedX = 10;
+            break;
+        }
+    m_fired = true
+    }
 }
 
-else if (keyboard_check(ord('W')))
+if(sprite_index == spr_ysera_skill)
 {
-    phy_position_y = phy_position_y - 4;
-    sprite_index = spr_ysera_walk_back;
-    m_playerDirection = PlayerDirection.UP;
+    if(image_index > 2 && m_fired == false)
+    {
+        instance_create(x, y, obj_ysera_skill_effct);
+        m_fired = true;
+    }
 }
-
-else if (keyboard_check(ord('S')))
-{
-    phy_position_y = phy_position_y + 4;
-    sprite_index = spr_ysera_walk_front;
-    m_playerDirection = PlayerDirection.DOWN;
-}
-
-else
-{
-    sprite_index = spr_ysera_idle;
-}
-}
-
