@@ -74,22 +74,34 @@ if(sprite_index == spr_ysera_attack_side
     if(image_index > 2 && m_fired == false)
     {
     var magicBullet = instance_create(x, y, obj_ysera_magic_bullet);
+    var deltaX = 0;
+    var deltaY = 0;
     switch(m_playerDirection)
-    {
+        {
         case PlayerDirection.UP:
             magicBullet.m_speedY = -10;
+            magicBullet.image_angle = 270;
+            deltaY = -89;
             break;
         case PlayerDirection.DOWN:
             magicBullet.m_speedY = 10;
+            magicBullet.image_angle = 90;
             break;
         case PlayerDirection.LEFT:
             magicBullet.m_speedX = -10;
+            deltaX = -65;
+            deltaY = -33;
             break;
         case PlayerDirection.RIGHT:
             magicBullet.m_speedX = 10;
+            magicBullet.image_angle = 180;
+            deltaX = 65;
+            deltaY = -33;
             break;
         }
-    m_fired = true
+        magicBullet.x += deltaX;
+        magicBullet.y += deltaY;
+        m_fired = true
     }
 }
 
@@ -97,7 +109,7 @@ if(sprite_index == spr_ysera_skill)
 {
     if(image_index > 2 && m_fired == false)
     {
-        instance_create(x, y, obj_ysera_skill_effct);
+        instance_create(x, y, obj_ysera_skill_effect);
         m_fired = true;
     }
 }

@@ -41,12 +41,13 @@
     <script>scripts\MagicBulletCreate.gml</script>
     <script>scripts\MagicBulletStep.gml</script>
     <script>scripts\MagicBulletOutsideRoom.gml</script>
+    <script>scripts\SkillEffectAnimationEnd.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Character">
       <object>objects\obj_ysera</object>
       <object>objects\obj_ysera_magic_bullet</object>
-      <object>objects\obj_ysera_skill_effct</object>
+      <object>objects\obj_ysera_skill_effect</object>
     </objects>
     <objects name="StaticObject">
       <object>objects\obj_statue</object>
