@@ -7,16 +7,24 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="Character">
-      <sprite>sprites\spr_ysera_idle</sprite>
-      <sprite>sprites\spr_ysera_walk_front</sprite>
-      <sprite>sprites\spr_ysera_walk_back</sprite>
-      <sprite>sprites\spr_ysera_walk_side</sprite>
-      <sprite>sprites\spr_ysera_attack_side</sprite>
-      <sprite>sprites\spr_ysera_attack_front</sprite>
-      <sprite>sprites\spr_ysera_attack_back</sprite>
-      <sprite>sprites\spr_ysera_skill</sprite>
-      <sprite>sprites\spr_ysera_magic_bullet</sprite>
-      <sprite>sprites\spr_ysera_skill_effect</sprite>
+      <sprites name="ysera">
+        <sprite>sprites\spr_ysera_idle</sprite>
+        <sprite>sprites\spr_ysera_walk_front</sprite>
+        <sprite>sprites\spr_ysera_walk_back</sprite>
+        <sprite>sprites\spr_ysera_walk_side</sprite>
+        <sprite>sprites\spr_ysera_attack_front</sprite>
+        <sprite>sprites\spr_ysera_attack_side</sprite>
+        <sprite>sprites\spr_ysera_attack_back</sprite>
+        <sprite>sprites\spr_ysera_skill</sprite>
+        <sprite>sprites\spr_ysera_magic_bullet</sprite>
+        <sprite>sprites\spr_ysera_skill_effect</sprite>
+      </sprites>
+      <sprites name="devil">
+        <sprite>sprites\spr_devil_idle</sprite>
+        <sprite>sprites\spr_devil_walk</sprite>
+        <sprite>sprites\spr_devil_attack</sprite>
+        <sprite>sprites\spr_devil_die</sprite>
+      </sprites>
     </sprites>
     <sprites name="StaticObject">
       <sprite>sprites\spr_statue</sprite>
@@ -35,17 +43,26 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\YseraStep.gml</script>
-    <script>scripts\YseraCreate.gml</script>
-    <script>scripts\YseraAnimationEnd.gml</script>
     <script>scripts\MagicBulletCreate.gml</script>
     <script>scripts\MagicBulletStep.gml</script>
     <script>scripts\MagicBulletOutsideRoom.gml</script>
     <script>scripts\SkillEffectAnimationEnd.gml</script>
+    <scripts name="ysera">
+      <script>scripts\YseraStep.gml</script>
+      <script>scripts\YseraCreate.gml</script>
+      <script>scripts\YseraAnimationEnd.gml</script>
+    </scripts>
+    <scripts name="devil">
+      <script>scripts\DevilStep.gml</script>
+      <script>scripts\DevilStep_new.gml</script>
+      <script>scripts\DevilCreate.gml</script>
+      <script>scripts\DevilAnimationEnd.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <objects name="Character">
       <object>objects\obj_ysera</object>
+      <object>objects\obj_devil</object>
       <object>objects\obj_ysera_magic_bullet</object>
       <object>objects\obj_ysera_skill_effect</object>
     </objects>
